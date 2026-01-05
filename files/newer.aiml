@@ -1,0 +1,199 @@
+<aiml>
+<category>
+<pattern>HI</pattern>
+<template>
+HELLO! WELCOME TO THE WGU CAREER ADVISOR CHATBOT.
+WHAT IS YOUR NAME?
+</template>
+</category>
+
+<!-- Capture Name -->
+<category>
+<pattern>*</pattern>
+<that>WHAT IS YOUR NAME?</that>
+<template>
+<set name="username"><star/></set>
+<set name="stage">READY</set>
+NICE TO MEET YOU, <get name="username"/>.
+TYPE READY TO BEGIN.
+</template>
+</category>
+
+<!-- Ready -->
+<category>
+<pattern>READY</pattern>
+<template>
+<set name="stage">Q1</set>
+QUESTION 1: DO YOU ENJOY BUILDING SOFTWARE APPLICATIONS?
+</template>
+</category>
+
+<!-- YES variations -->
+<category>
+<pattern>YES</pattern>
+<template><srai>YESCORE</srai></template>
+</category>
+<category><pattern>Y</pattern><template><srai>YESCORE</srai></template></category>
+<category><pattern>yes</pattern><template><srai>YESCORE</srai></template></category>
+<category><pattern>y</pattern><template><srai>YESCORE</srai></template></category>
+
+<!-- NO variations -->
+<category>
+<pattern>NO</pattern>
+<template><srai>NOCORE</srai></template>
+</category>
+<category><pattern>N</pattern><template><srai>NOCORE</srai></template></category>
+<category><pattern>no</pattern><template><srai>NOCORE</srai></template></category>
+<category><pattern>n</pattern><template><srai>NOCORE</srai></template></category>
+
+<!-- YES core logic -->
+<category>
+<pattern>YESCORE</pattern>
+<template>
+<condition name="stage">
+<li value="Q1">
+<set name="q1">YES</set>
+<set name="stage">Q2</set>
+QUESTION 2: DO YOU ENJOY DESIGNING WEBSITES OR FRONT END LAYOUTS?
+</li>
+
+<li value="Q2">
+<set name="q2">YES</set>
+<set name="stage">Q3</set>
+QUESTION 3: DO YOU ENJOY WORKING WITH DATA AND STATISTICS?
+</li>
+
+<li value="Q3">
+<set name="q3">YES</set>
+<set name="stage">Q4</set>
+QUESTION 4: DO YOU LIKE SOLVING LOGICAL PROBLEMS?
+</li>
+
+<li value="Q4">
+<set name="q4">YES</set>
+<set name="stage">Q5</set>
+QUESTION 5: DO YOU ENJOY CYBERSECURITY OR NETWORKING?
+</li>
+
+<li value="Q5">
+<set name="q5">YES</set>
+<srai>RESULT</srai>
+</li>
+
+<li>
+PLEASE ANSWER THE CURRENT QUESTION.
+</li>
+</condition>
+</template>
+</category>
+
+<!-- NO core logic -->
+<category>
+<pattern>NOCORE</pattern>
+<template>
+<condition name="stage">
+<li value="Q1">
+<set name="q1">NO</set>
+<set name="stage">Q2</set>
+QUESTION 2: DO YOU ENJOY DESIGNING WEBSITES OR FRONT END LAYOUTS?
+</li>
+
+<li value="Q2">
+<set name="q2">NO</set>
+<set name="stage">Q3</set>
+QUESTION 3: DO YOU ENJOY WORKING WITH DATA AND STATISTICS?
+</li>
+
+<li value="Q3">
+<set name="q3">NO</set>
+<set name="stage">Q4</set>
+QUESTION 4: DO YOU LIKE SOLVING LOGICAL PROBLEMS?
+</li>
+
+<li value="Q4">
+<set name="q4">NO</set>
+<set name="stage">Q5</set>
+QUESTION 5: DO YOU ENJOY CYBERSECURITY OR NETWORKING?
+</li>
+
+<li value="Q5">
+<set name="q5">NO</set>
+<srai>RESULT</srai>
+</li>
+
+<li>
+PLEASE ANSWER THE CURRENT QUESTION.
+</li>
+</condition>
+</template>
+</category>
+
+<!-- Career Recommendation -->
+<category>
+<pattern>RESULT</pattern>
+<template>
+BASED ON YOUR RESPONSES, <get name="username"/>:
+
+<condition name="q4" value="YES">
+
+  <!-- MACHINE LEARNING ENGINEER -->
+  <condition name="q3" value="YES">
+    CAREER MATCH: MACHINE LEARNING ENGINEER.
+    ADVICE:
+    - STUDY PYTHON AND MACHINE LEARNING LIBRARIES.
+    - PRACTICE MODEL BUILDING AND DATA ANALYSIS.
+  </condition>
+
+  <!-- WEB DEVELOPER -->
+  <condition name="q2" value="YES">
+    CAREER MATCH: WEB DEVELOPER.
+    ADVICE:
+    - BUILD RESPONSIVE WEBSITES.
+    - LEARN MODERN JAVASCRIPT FRAMEWORKS.
+  </condition>
+
+  <!-- SOFTWARE DEVELOPER -->
+  <condition name="q1" value="YES">
+    CAREER MATCH: SOFTWARE DEVELOPER.
+    ADVICE:
+    - PRACTICE ALGORITHMS AND PROBLEM SOLVING.
+    - BUILD APPLICATION PROJECTS.
+  </condition>
+
+</condition>
+
+<!-- DATA ANALYST -->
+<condition name="q3" value="YES">
+  CAREER MATCH: DATA ANALYST.
+  ADVICE:
+  - LEARN SQL AND DATA VISUALIZATION.
+  - WORK WITH REAL-WORLD DATASETS.
+</condition>
+
+<!-- CYBERSECURITY -->
+<condition name="q5" value="YES">
+  CAREER MATCH: CYBERSECURITY ANALYST.
+  ADVICE:
+  - STUDY NETWORKING AND SECURITY BASICS.
+  - PRACTICE WITH SECURITY LABS.
+</condition>
+
+<!-- FALLBACK -->
+<condition>
+  CAREER MATCH: GENERAL IT OR TECHNOLOGY ROLE.
+  ADVICE:
+  - EXPLORE MULTIPLE TECH DOMAINS.
+</condition>
+
+THANK YOU FOR USING THE WGU CAREER ADVISOR CHATBOT.
+</template>
+</category>
+
+<!-- Fallback -->
+<category>
+<pattern>*</pattern>
+<template>
+PLEASE TYPE READY TO BEGIN OR ANSWER YES OR NO.
+</template>
+</category>
+</aiml>
