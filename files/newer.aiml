@@ -23,8 +23,8 @@ TYPE READY TO BEGIN.
 <category>
 <pattern>READY</pattern>
 <template>
-<set name="stage">Q1</set>
-QUESTION 1: DO YOU ENJOY BUILDING SOFTWARE APPLICATIONS?
+<set name="stage">Q1: </set>
+DO YOU ENJOY BUILDING SOFTWARE APPLICATIONS?
 </template>
 </category>
 
@@ -52,31 +52,31 @@ QUESTION 1: DO YOU ENJOY BUILDING SOFTWARE APPLICATIONS?
 <template>
 <condition name="stage">
 <li value="Q1">
-<set name="q1">YES</set>
-<set name="stage">Q2</set>
+<set name="q1">YES </set>
+<set name="stage">Q2: </set>
 QUESTION 2: DO YOU ENJOY DESIGNING WEBSITES OR FRONT END LAYOUTS?
 </li>
 
 <li value="Q2">
-<set name="q2">YES</set>
-<set name="stage">Q3</set>
+<set name="q2">YES </set>
+<set name="stage">Q3: </set>
 QUESTION 3: DO YOU ENJOY WORKING WITH DATA AND STATISTICS?
 </li>
 
 <li value="Q3">
-<set name="q3">YES</set>
-<set name="stage">Q4</set>
+<set name="q3">YES </set>
+<set name="stage">Q4: </set>
 QUESTION 4: DO YOU LIKE SOLVING LOGICAL PROBLEMS?
 </li>
 
 <li value="Q4">
-<set name="q4">YES</set>
-<set name="stage">Q5</set>
+<set name="q4">YES </set>
+<set name="stage">Q5: </set>
 QUESTION 5: DO YOU ENJOY CYBERSECURITY OR NETWORKING?
 </li>
 
 <li value="Q5">
-<set name="q5">YES</set>
+<set name="q5">YES </set>
 <srai>RESULT</srai>
 </li>
 
@@ -93,31 +93,31 @@ PLEASE ANSWER THE CURRENT QUESTION.
 <template>
 <condition name="stage">
 <li value="Q1">
-<set name="q1">NO</set>
-<set name="stage">Q2</set>
+<set name="q1">NO </set>
+<set name="stage">Q2: </set>
 QUESTION 2: DO YOU ENJOY DESIGNING WEBSITES OR FRONT END LAYOUTS?
 </li>
 
 <li value="Q2">
-<set name="q2">NO</set>
-<set name="stage">Q3</set>
+<set name="q2">NO </set>
+<set name="stage">Q3: </set>
 QUESTION 3: DO YOU ENJOY WORKING WITH DATA AND STATISTICS?
 </li>
 
 <li value="Q3">
-<set name="q3">NO</set>
-<set name="stage">Q4</set>
+<set name="q3">NO </set>
+<set name="stage">Q4: </set>
 QUESTION 4: DO YOU LIKE SOLVING LOGICAL PROBLEMS?
 </li>
 
 <li value="Q4">
-<set name="q4">NO</set>
-<set name="stage">Q5</set>
+<set name="q4">NO </set>
+<set name="stage">Q5: </set>
 QUESTION 5: DO YOU ENJOY CYBERSECURITY OR NETWORKING?
 </li>
 
 <li value="Q5">
-<set name="q5">NO</set>
+<set name="q5">NO </set>
 <srai>RESULT</srai>
 </li>
 
@@ -151,15 +151,15 @@ BASED ON YOUR RESPONSES, <get name="username"/>:
     - BUILD RESPONSIVE WEBSITES.
     - LEARN MODERN JAVASCRIPT FRAMEWORKS.
   </condition>
-
-  <!-- SOFTWARE DEVELOPER -->
-  <condition name="q1" value="YES">
-    CAREER MATCH: SOFTWARE DEVELOPER.
-    ADVICE:
-    - PRACTICE ALGORITHMS AND PROBLEM SOLVING.
-    - BUILD APPLICATION PROJECTS.
-  </condition>
-
+  <condition name="q2" value="YES">
+    <!-- SOFTWARE DEVELOPER -->
+      <condition name="q1" value="YES">
+        CAREER MATCH: SOFTWARE DEVELOPER.
+        ADVICE:
+        - PRACTICE ALGORITHMS AND PROBLEM SOLVING.
+        - BUILD APPLICATION PROJECTS.
+      </condition>
+    </condition>    
 </condition>
 
 <!-- DATA ANALYST -->
@@ -178,12 +178,7 @@ BASED ON YOUR RESPONSES, <get name="username"/>:
   - PRACTICE WITH SECURITY LABS.
 </condition>
 
-<!-- FALLBACK -->
-<condition>
-  CAREER MATCH: GENERAL IT OR TECHNOLOGY ROLE.
-  ADVICE:
-  - EXPLORE MULTIPLE TECH DOMAINS.
-</condition>
+
 
 THANK YOU FOR USING THE WGU CAREER ADVISOR CHATBOT.
 </template>
